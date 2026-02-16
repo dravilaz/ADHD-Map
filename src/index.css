@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/*
+ * System One — Clinical ADHD Platform
+ * Tailwind v4 theme using CSS-first configuration
+ * Blue-green clinical palette with RTL Hebrew support
+ */
+
+@theme {
+  /* Clinical blue-green palette */
+  --color-clinical-50: #f0fdfa;
+  --color-clinical-100: #ccfbf1;
+  --color-clinical-200: #99f6e4;
+  --color-clinical-300: #5eead4;
+  --color-clinical-400: #2dd4bf;
+  --color-clinical-500: #14b8a6;
+  --color-clinical-600: #0d9488;
+  --color-clinical-700: #0f766e;
+  --color-clinical-800: #115e59;
+  --color-clinical-900: #134e4a;
+  --color-clinical-950: #042f2e;
+
+  /* Accent / action blue */
+  --color-action-50: #eff6ff;
+  --color-action-100: #dbeafe;
+  --color-action-200: #bfdbfe;
+  --color-action-300: #93c5fd;
+  --color-action-400: #60a5fa;
+  --color-action-500: #3b82f6;
+  --color-action-600: #2563eb;
+  --color-action-700: #1d4ed8;
+  --color-action-800: #1e40af;
+  --color-action-900: #1e3a8a;
+
+  /* Warm accent for effort/emotion */
+  --color-warm-50: #fff7ed;
+  --color-warm-100: #ffedd5;
+  --color-warm-200: #fed7aa;
+  --color-warm-300: #fdba74;
+  --color-warm-400: #fb923c;
+  --color-warm-500: #f97316;
+  --color-warm-600: #ea580c;
+
+  /* Alert / medical */
+  --color-alert-50: #fef2f2;
+  --color-alert-100: #fee2e2;
+  --color-alert-500: #ef4444;
+  --color-alert-600: #dc2626;
+
+  /* Surface tokens */
+  --color-surface: #ffffff;
+  --color-surface-dim: #f8fafc;
+  --color-surface-bright: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  /* Typography */
+  --font-sans: "Heebo", "Assistant", system-ui, -apple-system, sans-serif;
+
+  /* Spacing for bottom nav safe area */
+  --spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Base styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-dim);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 4px;
+  }
+}
