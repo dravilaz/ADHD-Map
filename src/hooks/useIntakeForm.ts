@@ -1,15 +1,40 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import type { IntakeFormData, IntakeStep } from '@/types'
 import { INTAKE_STEPS } from '@/types'
 import { DEFAULT_INTAKE } from '@/lib/intake-defaults'
 
+const STORAGE_KEY = 'adhd-map-intake'
+
+function loadFromStorage(): IntakeFormData | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    return JSON.parse(raw) as IntakeFormData
+  } catch {
+    return null
+  }
+}
+
+function saveToStorage(data: IntakeFormData) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  } catch {
+    // storage full or unavailable — silently ignore
+  }
+}
+
 export function useIntakeForm(initial?: Partial<IntakeFormData>) {
-  const [formData, setFormData] = useState<IntakeFormData>({
-    ...DEFAULT_INTAKE,
-    ...initial,
+  const [formData, setFormData] = useState<IntakeFormData>(() => {
+    const stored = loadFromStorage()
+    return stored ?? { ...DEFAULT_INTAKE, ...initial }
   })
 
   const [currentStep, setCurrentStep] = useState<IntakeStep>('personal')
+
+  // Persist to localStorage on every change
+  useEffect(() => {
+    saveToStorage(formData)
+  }, [formData])
 
   const stepIndex = INTAKE_STEPS.findIndex((s) => s.key === currentStep)
   const isFirst = stepIndex === 0

@@ -6,6 +6,8 @@ import { PersonalStep } from './components/PersonalStep'
 import { FamilyStep } from './components/FamilyStep'
 import { MedicalStep } from './components/MedicalStep'
 import { HabitsStep } from './components/HabitsStep'
+import { ASRSStep } from './components/ASRSStep'
+import { TherapistSummaryStep } from './components/TherapistSummaryStep'
 import { ReviewStep } from './components/ReviewStep'
 import { ChevronRight, ChevronLeft, Send } from 'lucide-react'
 
@@ -54,6 +56,18 @@ export function IntakePage() {
           <HabitsStep
             data={formData.habitsAndAddictions}
             onChange={(d) => updateField('habitsAndAddictions', d)}
+          />
+        )}
+        {currentStep === 'asrs' && (
+          <ASRSStep
+            data={formData.asrs}
+            onChange={(d) => updateField('asrs', d)}
+          />
+        )}
+        {currentStep === 'summary' && (
+          <TherapistSummaryStep
+            data={formData.therapistSummary}
+            onChange={(d) => updateField('therapistSummary', d)}
           />
         )}
         {currentStep === 'review' && <ReviewStep data={formData} />}
