@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { BottomNav } from '@/components/ui/BottomNav'
 import { IntakePage } from '@/features/intake/IntakePage'
+import { BaselinePage } from '@/features/baseline/BaselinePage'
 import { DashboardPage } from '@/features/roadmap/DashboardPage'
 import { FeedbackPage } from '@/features/feedback/FeedbackPage'
 import { ProfilePage } from '@/features/profile/ProfilePage'
@@ -12,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/intake" replace />} />
           <Route path="/intake" element={<IntakePage />} />
+          <Route path="/baseline" element={<BaselinePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/profile" element={<ProfilePage />} />

@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ClipboardList, BarChart3, MessageSquare, User } from 'lucide-react'
+import { ClipboardList, BarChart3, MessageSquare, User, FileText } from 'lucide-react'
 
 const NAV_ITEMS = [
   { path: '/intake', labelHe: 'קליטה', icon: ClipboardList },
+  { path: '/baseline', labelHe: 'מצב פתיחה', icon: FileText },
   { path: '/dashboard', labelHe: 'מפה', icon: BarChart3 },
   { path: '/feedback', labelHe: 'משוב', icon: MessageSquare },
   { path: '/profile', labelHe: 'פרופיל', icon: User },
